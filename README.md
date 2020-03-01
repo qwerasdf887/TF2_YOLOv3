@@ -17,7 +17,7 @@ Tensorflow 2.1版的YOLOv3，參考許多前人的寫法並且修改一些個人
 2. Python 3.5~3.7
 3. OpenCV 3~4
 
-##使用訓練好的weights
+## 使用訓練好的weights
 
 至[YOLO](https://pjreddie.com/darknet/yolo/) 下載對應的權重，並且使用converty.py轉換為.h5檔案。
 
@@ -34,7 +34,7 @@ python python test_img.py
     </a>
 </p>
 
-##training
+## training
 
 需修改train.py。
 使用[labelImg](https://github.com/tzutalin/labelImg) 生成的xml檔即可。
