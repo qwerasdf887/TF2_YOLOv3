@@ -1,6 +1,8 @@
 # TF2_YOLOv3
 Tensorflow 2.1版的YOLOv3，參考許多前人的寫法並且修改一些個人感覺奇怪的部分。
+
 權重轉換的converty.py由[qqwweee](https://github.com/qqwweee/keras-yolo3) 修改而來。
+
 裡面包含一些詳細註解。
 
 ## References:
@@ -38,4 +40,4 @@ python python test_img.py
 
 需修改train.py。
 使用[labelImg](https://github.com/tzutalin/labelImg) 生成的xml檔即可。
-如要使用YOLOv3提供的weights，類別又不同時，在convert時，要先修改yolo.cfg相關層。
+如要使用YOLOv3提供的weights，類別數又不同時，在convert時，要先修改yolo.cfg相關層。
