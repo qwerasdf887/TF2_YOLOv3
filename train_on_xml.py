@@ -92,16 +92,18 @@ def img_generator(xml_name, ann_path, batch_size, input_shape, anchors, anchor_m
         image_data = []
         box_data = []
         for r in range(batch_size):
+            if i==0:
+                np.random.shuffle(xml_name)
             image, box = load_data(ann_path + xml_name[i])
             image_data.append(image)
             box_data.append(box)
+            i = (i+1) % n
 
         image_data = (np.array(image_data) / 255).astype(np.float32)
         box_data = np.array(box_data)
         y_true = preprocess_true_boxes(box_data, input_shape, anchors, anchor_mask, num_classes, tiny=is_tiny_version)
         
         yield (image_data, y_true)
-        i = (i+1) % n
 
 
 # In[6]:
