@@ -36,11 +36,11 @@ def main():
     #creat model
     if is_tiny_version:
         model = DarknetTiny_body(input_shape, num_anchors, num_classes)
-        anchor_mask = [[1], [0]]
+        anchor_mask = [[3,4,5], [0,1,2]]
         
     else:
         model = Darknet_body(input_shape, num_anchors, num_classes)
-        anchor_mask = [[2], [1], [0]]
+        anchor_mask = [[6,7,8], [3,4,5], [0,1,2]]
         
     model.summary()
     
