@@ -86,9 +86,6 @@ def img_generator(xml_name, ann_path, batch_size, input_shape, anchors, anchor_m
     n = len(xml_name)
     i = 0
     while True:
-        if i==0:
-            np.random.shuffle(xml_name)
-        
         image_data = []
         box_data = []
         for r in range(batch_size):
