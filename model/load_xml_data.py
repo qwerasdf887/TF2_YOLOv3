@@ -85,7 +85,7 @@ def rot_image(img, box):
     
     return rot_img, return_box
 
-def load_data(xml_path, output_shape=(416,416), jitter=.3, random=True):
+def load_data(xml_path, output_shape=(416,416), jitter=.3, max_boxes=40, random=True):
     #load xml data
     tree = ET.parse(xml_path)
     
@@ -120,8 +120,9 @@ def load_data(xml_path, output_shape=(416,416), jitter=.3, random=True):
     #將圖片貼上
     new_img[dy:dy+h, dx:dx+w] = img
     
-    loc_list = []
+    loc_list = np.zeros((max_boxes, 5))
     #load obj loc
+    box_count = 0
     for obj in root.iter('object'):
         #難易度
         difficult = obj.find('difficult').text
@@ -142,7 +143,7 @@ def load_data(xml_path, output_shape=(416,416), jitter=.3, random=True):
         x_max = int(loc.find('xmax').text) * scale + dx
         y_max = int(loc.find('ymax').text) * scale + dy
         
-        loc_list.append([x_min, y_min, x_max, y_max, cls_id])
+        loc_list[box_count, :] = np.array([x_min, y_min, x_max, y_max, cls_id])
     
     
     loc_list = np.array(loc_list, dtype='float32')
