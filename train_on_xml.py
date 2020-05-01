@@ -11,7 +11,6 @@ import numpy as np
 import cv2
 from model.models import Darknet_body, DarknetTiny_body
 from model.loss import YoLoLoss
-from model.data_aug import get_random_data
 from model.load_xml_data import load_data, preprocess_true_boxes
 import os
 
