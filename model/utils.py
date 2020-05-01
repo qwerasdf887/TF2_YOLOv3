@@ -76,7 +76,7 @@ def predict_box(y_pred, input_shape, anchors, anchor_mask, score_threshold=.6, i
         scale = input_shape / grid_shape
         
         box_xy = (tf.sigmoid(y_pred[i][...,:2]) + grid) * tf.cast(scale[::-1], tf.float32)
-        box_wh = tf.exp(y_pred[i][...,2:4]) * anchors[anchor_mask[i]] * tf.cast(input_shape, tf.float32)
+        box_wh = tf.exp(y_pred[i][...,2:4]) * anchors[anchor_mask[i]] * tf.cast(input_shape[::-1], tf.float32)
         box_xy_mins = box_xy - (box_wh / 2)
         box_xy_maxes = box_xy + (box_wh / 2)
         
